@@ -1,16 +1,16 @@
 ﻿using Entities.Abstract;
-using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccess.Abstract
+namespace Entities.Concrete
 {
-    public interface ICarDal:IEntityRepository<Car>
+    public class Brand:IEntity
     {
-   
+        public int BrandId { get; set; }
+
+        public string BrandName { get; set; }
     }
 }
