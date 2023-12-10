@@ -32,5 +32,24 @@ namespace Business.Concrete
         {
             return _carDal.GetAll(c=>c.ColorId==id);
         }
+
+        public void Add(Car car)
+        {
+            if (car.CarName.Length<2)
+            {
+                Console.WriteLine("Araba ismi minimum 2 karakter içermelidir.");
+            }
+
+            else if (car.DailyPrice==0)
+            {
+                Console.WriteLine("Araba fiyatı 0'dan büyük olmalıdır.");
+            }
+            else
+            {
+                _carDal.Add(car);
+            }
+        }
+
+     
     }
 }
