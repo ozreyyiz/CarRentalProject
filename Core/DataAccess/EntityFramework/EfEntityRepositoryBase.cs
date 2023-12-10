@@ -1,6 +1,4 @@
-﻿using Core.DataAccess;
-using DataAccess.Abstract;
-using Entities.Concrete;
+﻿using Core.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,13 +7,13 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccess.Concrete.EntityFramework
+namespace Core.DataAccess.EntityFramework
 {
-    public class EfCarDal : IEntityRepository<Car>
+    public class EfEntityRepositoryBase<TEntity, TContext>: IEntityRepository<TEntity> where TEntity : class, IEntity, new() where TContext : DbContext, new()
     {
-        public void Add(Car entity)
+        public void Add(TEntity entity)
         {
-            using (ReCapContext context = new ReCapContext())
+            using (TContext context = new TContext())
             {
                 var addedEntity = context.Entry(entity);
                 addedEntity.State = EntityState.Added;
@@ -23,9 +21,9 @@ namespace DataAccess.Concrete.EntityFramework
             }
         }
 
-        public void Delete(Car entity)
+        public void Delete(TEntity entity)
         {
-            using (ReCapContext context = new ReCapContext())
+            using (TContext context = new TContext())
             {
                 var deletedEntity = context.Entry(entity);
                 deletedEntity.State = EntityState.Deleted;
@@ -33,19 +31,19 @@ namespace DataAccess.Concrete.EntityFramework
             }
         }
 
-        public Car Get(Expression<Func<Car, bool>> filter)
+        public TEntity Get(Expression<Func<TEntity, bool>> filter)
         {
             throw new NotImplementedException();
         }
 
-        public List<Car> GetAll(Expression<Func<Car, bool>> filter = null)
+        public List<TEntity> GetAll(Expression<Func<TEntity, bool>> filter = null)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(Car entity)
+        public void Update(TEntity entity)
         {
-            using (ReCapContext context = new ReCapContext())
+            using (TContext context = new TContext())
             {
                 var updatedEntity = context.Entry(entity);
                 updatedEntity.State = EntityState.Modified;

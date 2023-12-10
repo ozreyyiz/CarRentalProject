@@ -42,14 +42,22 @@ namespace Business.Concrete
 
             else if (car.DailyPrice==0)
             {
-                Console.WriteLine("Araba fiyatı 0'dan büyük olmalıdır.");
+                 Console.WriteLine("Araba fiyatı 0'dan büyük olmalıdır.");
             }
             else
             {
-                _carDal.Add(car);
+                 _carDal.Add(car);
             }
         }
 
-     
+        public void Update(Car car)
+        {
+            _carDal.Update(car);
+        }
+
+        public void Delete(Car car)
+        {
+            _carDal.Delete(car);
+        }
     }
 }
