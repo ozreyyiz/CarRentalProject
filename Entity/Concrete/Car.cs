@@ -21,7 +21,7 @@ namespace Entities.Concrete
 
         public decimal DailyPrice { get; set; }
 
-        public string Descripion { get; set; }
+        public string Description { get; set; }
 
 
     }

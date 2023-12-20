@@ -1,4 +1,5 @@
 ﻿using Core.DataAccess;
+using Core.DataAccess.EntityFramework;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
@@ -10,36 +11,8 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    internal class EfBrandDal : IEntityRepository<Brand>
+    internal class EfBrandDal : EfEntityRepositoryBase<Brand,ReCapContext>,IBrandDal
     {
-        public void Add(Brand entity)
-        {
-            throw new NotImplementedException();
-        }
 
-        public void Delete(Brand entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Brand Get(Expression<Func<Brand, bool>> filter)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Car> GetAll(Expression<Func<Brand, bool>> filter = null)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(Brand entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        List<Brand> IEntityRepository<Brand>.GetAll(Expression<Func<Brand, bool>> filter)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

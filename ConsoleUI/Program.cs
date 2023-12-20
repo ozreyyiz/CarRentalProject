@@ -4,17 +4,27 @@ using DataAccess.Concrete.EntityFramework;
 using DataAccess.Concrete.InMemory;
 using Entities.Concrete;
 
-CarManager carManager=new CarManager( new InMemoryCarDal() );
-ColorManager colorManager=new ColorManager(new EfColorDal());
+CarManager carManager = new CarManager(new EfCarDal());
+ColorManager colorManager = new ColorManager(new EfColorDal());
 
 
 //foreach (var car in carManager.GetAll())
 //{
-//    Console.WriteLine(car.Descripion);
+//    Console.WriteLine(car.Description);
 //}
 
-Color color=new Color();
-color.ColorName = "La";
-color.ColorId = 10;
+//ColorAddTest(colorManager);
 
-colorManager.Add(color);
+foreach (var car in carManager.GetCarDetail())
+{
+    Console.WriteLine(car.BrandName + " / " + car.CarName + " / " + car.CarDailyPrice + " / " + car.CarDescription + " / " + car.ColorName);
+}
+
+static void ColorAddTest(ColorManager colorManager)
+{
+    Color color = new Color();
+    color.ColorName = "White";
+    color.ColorId = 1;
+
+    colorManager.Add(color);
+}
