@@ -11,12 +11,12 @@ namespace Business.Abstract
     {
         List<Brand> GetAll();
 
-        Color GetById(int id);
+        Brand GetById(int id);
 
-        void Add(Brand car);
+        void Add(Brand brand);
 
-        void Update(Brand car);
+        void Update(Brand brand);
 
-        void Delete(Brand car);
+        void Delete(Brand brand);
     }
 }
