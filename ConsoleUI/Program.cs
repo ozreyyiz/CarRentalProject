@@ -15,10 +15,22 @@ ColorManager colorManager = new ColorManager(new EfColorDal());
 
 //ColorAddTest(colorManager);
 
-foreach (var car in carManager.GetCarDetail())
+var result = carManager.GetCarDetail();
+
+if (result.Success)
 {
-    Console.WriteLine(car.BrandName + " / " + car.CarName + " / " + car.CarDailyPrice + " / " + car.CarDescription + " / " + car.ColorName);
+    foreach (var car in carManager.GetCarDetail().Data)
+    {
+        Console.WriteLine(car.BrandName + " / " + car.CarName + " / " + car.CarDailyPrice + " / " + car.CarDescription + " / " + car.ColorName);
+    }
 }
+
+else
+{
+    Console.WriteLine(result.Message);
+}
+
+
 
 static void ColorAddTest(ColorManager colorManager)
 {
