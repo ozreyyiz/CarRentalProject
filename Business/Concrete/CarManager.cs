@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.Constants;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
@@ -29,7 +30,7 @@ namespace Business.Concrete
         {
             if (DateTime.Now.Hour==23)
             {
-                return new ErrorDataResult<List<Car>>(_carDal.GetAll(),"Bakım saati");
+                return new ErrorDataResult<List<Car>>(_carDal.GetAll(),Messages.MaintenanceTime);
             }
 
             return new SuccessDataResult<List<Car>>( _carDal.GetAll());
@@ -49,31 +50,31 @@ namespace Business.Concrete
         {
             if (car.CarName.Length<2)
             {
-                return new ErrorResult("Araba ismi minimum 2 karakter içermelidir.");  
+                return new ErrorResult(Messages.NameLengthError);  
             }
 
             else if (car.DailyPrice==0)
             {
-                return new ErrorResult("Araba ismi minimum 2 karakter içermelidir.");
+                return new ErrorResult(Messages.MinPriceError);
 
             }
             else
             {
                  _carDal.Add(car);
-                return new SuccessResult("Araba eklendi.");
+                return new SuccessResult(Messages.CarAddSuccess);
             }
         }
 
         public IResult Update(Car car)
         {
             _carDal.Update(car);
-            return new SuccessResult("Ürün güncellendi.");
+            return new SuccessResult(Messages.CarUpdatedSuccess);
         }
 
         public IResult Delete(Car car)
         {
             _carDal.Delete(car);
-            return new SuccessResult("Ürün silindi.");
+            return new SuccessResult(Messages.CarDeletedSuccess);
         }
 
         public IDataResult<List<Car>> GetCarsByDailyPrice(decimal min, decimal max)
