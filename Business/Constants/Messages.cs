@@ -14,6 +14,13 @@ namespace Business.Constants
         public static string CarAddSuccess = "Araba eklendi.";
         public static string CarUpdatedSuccess = "Araba güncellendi.";
         public static string CarDeletedSuccess = "Araba silindi.";
+        public static string UserAddedSuccess = "Kullanıcı eklendi.";
+        public static string UserDeletedSuccess = "Kullanıcı silindi.";
+        public static string UserUpdatedSuccess = "Kullanıcı güncellendi.";
+        public static string RentalAddedSuccess = "Kiralama işlemi başarılı.";
+
+
+
 
 
 
