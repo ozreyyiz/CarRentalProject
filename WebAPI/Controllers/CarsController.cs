@@ -118,18 +118,3 @@ namespace WebAPI.Controllers
 
     }
 }
-
-
-
-
-//IDataResult<List<Car>> GetCarsByColorId(int id);
-
-//IDataResult<List<Car>> GetCarsByDailyPrice(decimal min, decimal max);
-
-//IDataResult<List<CarDetailDto>> GetCarDetail();
-
-//IResult Add(Car car);
-
-//IResult Update(Car car);
-
-//IResult Delete(Car car);

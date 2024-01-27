@@ -18,11 +18,11 @@ namespace Business.Constants
         public static string UserDeletedSuccess = "Kullanıcı silindi.";
         public static string UserUpdatedSuccess = "Kullanıcı güncellendi.";
         public static string RentalAddedSuccess = "Kiralama işlemi başarılı.";
-
-
-
-
-
-
+        public static string BrandAddedSuccess = "Marka eklendi.";
+        public static string BrandUpdatedSuccess = "Marka güncellendi.";
+        public static string BranddeletedSuccess = "Marka silindi.";
+        public static string ColorDeletedSuccess = "Renk silindi.";
+        public static string ColorUpdatedSucess = "Renk güncellendi.";
+        public static string ColorAddedSuccess = "Renk eklendi.";
     }
 }
