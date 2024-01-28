@@ -13,18 +13,18 @@ namespace WebAPI.Controllers
     public class CarsController : ControllerBase
     {
 
-        ICarService _cardal;
+        ICarService _carDal;
 
         public CarsController(ICarService carDal)
         {
-            _cardal = carDal;
+            _carDal = carDal;
         }
 
         [HttpGet("getall")]
 
         public IActionResult GetAll()
         {
-            var result=_cardal.GetAll();
+            var result=_carDal.GetAll();
             if (result.Success)
             {
                 return Ok(result);
@@ -36,7 +36,7 @@ namespace WebAPI.Controllers
 
         public IActionResult GetCarsByBrandId(int id)
         {
-            var result = _cardal.GetCarsByBrandId(id);
+            var result = _carDal.GetCarsByBrandId(id);
             if (result.Success)
             {
                 return Ok(result);
@@ -48,7 +48,7 @@ namespace WebAPI.Controllers
 
         public IActionResult GetCarsByColorId(int id)
         {
-            var result = _cardal.GetCarsByColorId(id);
+            var result = _carDal.GetCarsByColorId(id);
             if (result.Success)
             {
                 return Ok(result);
@@ -60,7 +60,7 @@ namespace WebAPI.Controllers
 
         public IActionResult GetCarsByDailyPrice(decimal min, decimal max)
         {
-            var result = _cardal.GetCarsByDailyPrice(min,max);
+            var result = _carDal.GetCarsByDailyPrice(min,max);
             if (result.Success)
             {
                 return Ok(result);
@@ -72,7 +72,7 @@ namespace WebAPI.Controllers
 
         public IActionResult GetCarDetail()
         {
-            var result = _cardal.GetCarDetail();
+            var result = _carDal.GetCarDetail();
             if (result.Success)
             {
                 return Ok(result);
@@ -84,7 +84,7 @@ namespace WebAPI.Controllers
 
         public IActionResult Add(Car car)
         {
-            var result = _cardal.Add(car);
+            var result = _carDal.Add(car);
             if (result.Success)
             {
                 return Ok(result);
@@ -96,7 +96,7 @@ namespace WebAPI.Controllers
 
         public IActionResult Delete(Car car)
         {
-            var result = _cardal.Delete(car);
+            var result = _carDal.Delete(car);
             if (result.Success)
             {
                 return Ok(result);
@@ -108,7 +108,7 @@ namespace WebAPI.Controllers
 
         public IActionResult Update(Car car)
         {
-            var result = _cardal.Update(car);
+            var result = _carDal.Update(car);
             if (result.Success)
             {
                 return Ok(result);

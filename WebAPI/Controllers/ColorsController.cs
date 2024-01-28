@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
-using DataAccess.Abstract;
+using Business.Constants;
+using Core.Utilities.Results;
 using Entities.Concrete;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -8,47 +9,19 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BrandsController : ControllerBase
+    public class ColorsController : ControllerBase
     {
-        IBrandService _brandDal;
+        IColorService _colorDal;
 
-        public BrandsController(IBrandService brandDal)
+        public ColorsController(IColorService colorService)
         {
-            _brandDal = brandDal;
-        }
-
-
-
-        [HttpPost("add")]
-
-        public IActionResult Add(Brand brand)
-        {
-            var result = _brandDal.Add(brand);
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-            return BadRequest(result);
-        }
-
-
-        [HttpPost("delete")]
-
-        public IActionResult Delete(Brand brand) 
-        {
-            var result = _brandDal.Delete(brand);
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-            return BadRequest(result);
+            _colorDal = colorService;
         }
 
         [HttpGet("getall")]
-
-        public IActionResult Get() 
+        public IActionResult Get()
         {
-        var result=_brandDal.GetAll();
+            var result=_colorDal.GetAll();
             if (result.Success)
             {
                 return Ok(result);
@@ -57,10 +30,20 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getbyid")]
-
-        public IActionResult GetById(int id)
+        public IActionResult Get(int id) 
         {
-            var result = _brandDal.GetById(id);
+            var result=_colorDal.GetById(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpPost("add")]
+        public IActionResult Add(Color color) 
+        {
+            var result = _colorDal.Add(color);
             if (result.Success)
             {
                 return Ok(result);
@@ -69,15 +52,28 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("update")]
-
-        public IActionResult Update(Brand brand)
+        public IActionResult Update(Color color)
         {
-            var result=_brandDal.Update(brand);
+            var result= _colorDal.Update(color);
             if (result.Success)
             {
                 return Ok(result);
             }
             return BadRequest(result);
         }
+
+        [HttpPost("delete")]
+        public IActionResult Delete(Color color) 
+        {
+            var result = _colorDal.Delete(color);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
     }
 }
+
+
